@@ -1,5 +1,5 @@
 {% set name = "lunardate" %}
-{% set version = "0.2.0" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6c9c96d9f01522a10ab35df1a9b48707ae64a086f13fd34498b43f465918cc6f
+  sha256: 8ff8c01721bef7710f0712a302b1cb7d0b8b3ffc72a63a9a056cd01e58e5485a
 
 build:
   noarch: python
