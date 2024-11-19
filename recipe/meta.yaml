@@ -1,38 +1,43 @@
 {% set name = "lunardate" %}
-{% set version = "0.2.0" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6c9c96d9f01522a10ab35df1a9b48707ae64a086f13fd34498b43f465918cc6f
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/lunardate-{{ version }}.tar.gz
+  sha256: 8ff8c01721bef7710f0712a302b1cb7d0b8b3ffc72a63a9a056cd01e58e5485a
 
 build:
   noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python
+    - python >={{ python_min }}
 
 test:
   imports:
     - lunardate
+  commands:
+    - pip check
+  requires:
+    - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/lidaobing/python-lunardate
-  license: GPL-3.0
-  license_family: GPL
+  summary: A Chinese Calendar Library in Pure Python
+  license: GPL-3.0-only
   license_file: LICENSE.txt
-  summary: 'A Chinese Calendar Library in Pure Python'
-
 
 extra:
   recipe-maintainers:
     - bletham
+    - thewchan
